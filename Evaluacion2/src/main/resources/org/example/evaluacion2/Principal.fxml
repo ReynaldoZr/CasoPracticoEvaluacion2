@@ -14,7 +14,6 @@
 
                 <Menu text="Archivo">
                     <items>
-                        <MenuItem onAction="#abrirRegistroCliente" text="Registrar Cliente" />
 
                         <MenuItem onAction="#abrirSolicitudServicio" text="Registrar Servicio" />
 
