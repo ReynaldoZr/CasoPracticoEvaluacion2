@@ -13,14 +13,14 @@ import javafx.stage.Stage;
 import java.time.LocalDate;
 
 public class ConsultaClientesController {
-    @FXML private TableView<Cliente> tablaClientes;
-    @FXML private TableColumn<Cliente, String> columnaNombre;
-    @FXML private TableColumn<Cliente, String> columnaTipo;
-    @FXML private TableColumn<Cliente, String> columnaCiudad;
-    @FXML private TableColumn<Cliente, LocalDate> columnaFecha;
-    @FXML private TableColumn<Cliente, String> columnaSolicitud;
+    @FXML private TableView<RegistroCliente> tablaClientes;
+    @FXML private TableColumn<RegistroCliente, String> columnaNombre;
+    @FXML private TableColumn<RegistroCliente, String> columnaTipo;
+    @FXML private TableColumn<RegistroCliente, String> columnaCiudad;
+    @FXML private TableColumn<RegistroCliente, LocalDate> columnaFecha;
+    @FXML private TableColumn<RegistroCliente, String> columnaSolicitud;
 
-    private final ObservableList<Cliente> clientes = FXCollections.observableArrayList();
+    private final ObservableList<RegistroCliente> clientes = FXCollections.observableArrayList();
 
     @FXML
     private void initialize() {
@@ -30,9 +30,9 @@ public class ConsultaClientesController {
         columnaFecha.setCellValueFactory(d -> new ReadOnlyObjectWrapper<>(d.getValue().getFechaNacimiento()));
         columnaSolicitud.setCellValueFactory(d -> new ReadOnlyStringWrapper(d.getValue().getTipoSolicitud()));
 
-        clientes.add(new Cliente("Ana", "López", "Frecuente", "Managua",
+        clientes.add(new RegistroCliente("Ana", "López", "Frecuente", "Managua",
                 LocalDate.of(2002, 5, 10), "Soporte técnico"));
-        clientes.add(new Cliente("Carlos", "Ruiz", "Nuevo", "Masaya",
+        clientes.add(new RegistroCliente("Carlos", "Ruiz", "Nuevo", "Masaya",
                 LocalDate.of(1998, 11, 23), "Instalación"));
         tablaClientes.setItems(clientes);
     }
@@ -48,7 +48,7 @@ public class ConsultaClientesController {
 
     @FXML
     private void verClienteSeleccionado() {
-        Cliente cliente = tablaClientes.getSelectionModel().getSelectedItem();
+        RegistroCliente cliente = tablaClientes.getSelectionModel().getSelectedItem();
         if (cliente == null) {
             Alert alerta = new Alert(Alert.AlertType.WARNING);
             alerta.setTitle("Advertencia");
