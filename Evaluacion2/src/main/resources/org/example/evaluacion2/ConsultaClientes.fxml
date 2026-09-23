@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="560.0" prefWidth="900.0"
+            xmlns="http://javafx.com/javafx/21.0.6"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.evaluacion2.ConsultaClientesController">
+    <top>
+        <VBox spacing="5.0" style="-fx-background-color: #1f4e78;">
+            <padding><Insets bottom="18.0" left="24.0" right="24.0" top="18.0"/></padding>
+            <Label text="Consulta de clientes"
+                   style="-fx-font-size: 25px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Selecciona un cliente y presiona Ver detalle"
+                   style="-fx-font-size: 13px; -fx-text-fill: white;"/>
+        </VBox>
+    </top>
+    <center>
+        <TableView fx:id="tablaClientes">
+            <columns>
+                <TableColumn fx:id="columnaNombre" prefWidth="190.0" text="Nombre completo"/>
+                <TableColumn fx:id="columnaTipo" prefWidth="140.0" text="Tipo de cliente"/>
+                <TableColumn fx:id="columnaCiudad" prefWidth="120.0" text="Ciudad"/>
+                <TableColumn fx:id="columnaFecha" prefWidth="170.0" text="Fecha de nacimiento"/>
+                <TableColumn fx:id="columnaSolicitud" prefWidth="200.0" text="Tipo de solicitud"/>
+            </columns>
+            <BorderPane.margin><Insets bottom="15.0" left="20.0" right="20.0" top="20.0"/></BorderPane.margin>
+        </TableView>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="12.0">
+            <padding><Insets bottom="15.0" left="20.0" right="20.0" top="5.0"/></padding>
+            <Button onAction="#mostrarInformacion" prefWidth="110.0" text="Información"/>
+            <Button defaultButton="true" onAction="#verClienteSeleccionado" prefWidth="110.0"
+                    text="Ver detalle" style="-fx-background-color: #1f4e78; -fx-text-fill: white;"/>
+            <Button onAction="#cerrarVentana" prefWidth="85.0" text="Cerrar"/>
+        </HBox>
+    </bottom>
+</BorderPane>
