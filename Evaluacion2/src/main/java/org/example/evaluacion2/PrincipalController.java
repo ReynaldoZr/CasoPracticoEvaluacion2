@@ -1,15 +1,11 @@
-package com.example.evaluacion2;
+package org.example.evaluacion2;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 
 public class PrincipalController {
-
-    @FXML
-    private void abrirRegistroCliente() {
-        mostrarMensaje("Registro de Cliente");
-    }
+    
 
     @FXML
     private void abrirSolicitudServicio() {
