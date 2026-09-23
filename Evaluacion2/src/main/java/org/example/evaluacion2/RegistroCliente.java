@@ -2,7 +2,7 @@ package org.example.evaluacion2;
 
 import java.time.LocalDate;
 
-public class Cliente {
+public class RegistroCliente {
     private final String nombres;
     private final String apellidos;
     private final String tipoCliente;
@@ -10,8 +10,8 @@ public class Cliente {
     private final LocalDate fechaNacimiento;
     private final String tipoSolicitud;
 
-    public Cliente(String nombres, String apellidos, String tipoCliente,
-                   String ciudad, LocalDate fechaNacimiento, String tipoSolicitud) {
+    public RegistroCliente(String nombres, String apellidos, String tipoCliente,
+                           String ciudad, LocalDate fechaNacimiento, String tipoSolicitud) {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.tipoCliente = tipoCliente;
