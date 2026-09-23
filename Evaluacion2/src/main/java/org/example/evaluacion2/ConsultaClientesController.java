@@ -13,27 +13,78 @@ import javafx.stage.Stage;
 import java.time.LocalDate;
 
 public class ConsultaClientesController {
-    @FXML private TableView<Cliente> tablaClientes;
-    @FXML private TableColumn<Cliente, String> columnaNombre;
-    @FXML private TableColumn<Cliente, String> columnaTipo;
-    @FXML private TableColumn<Cliente, String> columnaCiudad;
-    @FXML private TableColumn<Cliente, LocalDate> columnaFecha;
-    @FXML private TableColumn<Cliente, String> columnaSolicitud;
 
-    private final ObservableList<Cliente> clientes = FXCollections.observableArrayList();
+    @FXML
+    private TableView<Cliente> tablaClientes;
+
+    @FXML
+    private TableColumn<Cliente, String> columnaNombre;
+
+    @FXML
+    private TableColumn<Cliente, String> columnaTipo;
+
+    @FXML
+    private TableColumn<Cliente, String> columnaCiudad;
+
+    @FXML
+    private TableColumn<Cliente, LocalDate> columnaFecha;
+
+    @FXML
+    private TableColumn<Cliente, String> columnaSolicitud;
+
+    private final ObservableList<Cliente> clientes =
+            FXCollections.observableArrayList();
 
     @FXML
     private void initialize() {
-        columnaNombre.setCellValueFactory(d -> new ReadOnlyStringWrapper(d.getValue().getNombreCompleto()));
-        columnaTipo.setCellValueFactory(d -> new ReadOnlyStringWrapper(d.getValue().getTipoCliente()));
-        columnaCiudad.setCellValueFactory(d -> new ReadOnlyStringWrapper(d.getValue().getCiudad()));
-        columnaFecha.setCellValueFactory(d -> new ReadOnlyObjectWrapper<>(d.getValue().getFechaNacimiento()));
-        columnaSolicitud.setCellValueFactory(d -> new ReadOnlyStringWrapper(d.getValue().getTipoSolicitud()));
+        columnaNombre.setCellValueFactory(datos ->
+                new ReadOnlyStringWrapper(
+                        datos.getValue().getNombreCompleto()
+                )
+        );
 
-        clientes.add(new Cliente("Ana", "López", "Frecuente", "Managua",
-                LocalDate.of(2002, 5, 10), "Soporte técnico"));
-        clientes.add(new Cliente("Carlos", "Ruiz", "Nuevo", "Masaya",
-                LocalDate.of(1998, 11, 23), "Instalación"));
+        columnaTipo.setCellValueFactory(datos ->
+                new ReadOnlyStringWrapper(
+                        datos.getValue().getTipoCliente()
+                )
+        );
+
+        columnaCiudad.setCellValueFactory(datos ->
+                new ReadOnlyStringWrapper(
+                        datos.getValue().getCiudad()
+                )
+        );
+
+        columnaFecha.setCellValueFactory(datos ->
+                new ReadOnlyObjectWrapper<>(
+                        datos.getValue().getFechaNacimiento()
+                )
+        );
+
+        columnaSolicitud.setCellValueFactory(datos ->
+                new ReadOnlyStringWrapper(
+                        datos.getValue().getTipoSolicitud()
+                )
+        );
+
+        clientes.add(new Cliente(
+                "Ana",
+                "López",
+                "Frecuente",
+                "Managua",
+                LocalDate.of(2002, 5, 10),
+                "Soporte técnico"
+        ));
+
+        clientes.add(new Cliente(
+                "Carlos",
+                "Ruiz",
+                "Nuevo",
+                "Masaya",
+                LocalDate.of(1998, 11, 23),
+                "Instalación"
+        ));
+
         tablaClientes.setItems(clientes);
     }
 
@@ -42,18 +93,24 @@ public class ConsultaClientesController {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Información");
         alerta.setHeaderText("Clientes registrados");
-        alerta.setContentText("Cantidad de clientes: " + clientes.size());
+        alerta.setContentText(
+                "Cantidad de clientes: " + clientes.size()
+        );
         alerta.showAndWait();
     }
 
     @FXML
     private void verClienteSeleccionado() {
-        Cliente cliente = tablaClientes.getSelectionModel().getSelectedItem();
+        Cliente cliente =
+                tablaClientes.getSelectionModel().getSelectedItem();
+
         if (cliente == null) {
             Alert alerta = new Alert(Alert.AlertType.WARNING);
             alerta.setTitle("Advertencia");
             alerta.setHeaderText("No seleccionaste un cliente");
-            alerta.setContentText("Selecciona una fila antes de continuar.");
+            alerta.setContentText(
+                    "Selecciona una fila antes de continuar."
+            );
             alerta.showAndWait();
             return;
         }
@@ -61,15 +118,20 @@ public class ConsultaClientesController {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Detalle del cliente");
         alerta.setHeaderText(cliente.getNombreCompleto());
-        alerta.setContentText("Tipo: " + cliente.getTipoCliente()
-                + "\nCiudad: " + cliente.getCiudad()
-                + "\nFecha: " + cliente.getFechaNacimiento()
-                + "\nSolicitud: " + cliente.getTipoSolicitud());
+        alerta.setContentText(
+                "Tipo: " + cliente.getTipoCliente()
+                        + "\nCiudad: " + cliente.getCiudad()
+                        + "\nFecha: " + cliente.getFechaNacimiento()
+                        + "\nSolicitud: " + cliente.getTipoSolicitud()
+        );
         alerta.showAndWait();
     }
 
     @FXML
     private void cerrarVentana() {
-        ((Stage) tablaClientes.getScene().getWindow()).close();
+        Stage ventana =
+                (Stage) tablaClientes.getScene().getWindow();
+
+        ventana.close();
     }
 }
