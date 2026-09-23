@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.practicafiledirectorychoose.PrincipalController">
+
+    <children>
+
+        <!-- MenuBar -->
+        <MenuBar layoutX="0.0" layoutY="0.0" prefWidth="600.0">
+
+            <menus>
+
+                <Menu text="Archivo">
+                    <items>
+                        <MenuItem onAction="#abrirRegistroCliente" text="Registrar Cliente" />
+
+                        <MenuItem onAction="#abrirSolicitudServicio" text="Registrar Servicio" />
+
+                        <MenuItem onAction="#salir" text="Salir" />
+                    </items>
+                </Menu>
+
+                <Menu text="Consultas">
+                    <items>
+                        <MenuItem onAction="#consultarClientes" text="Consultar Clientes" />
+
+                        <MenuItem onAction="#consultarServicios" text="Consultar Servicios" />
+                    </items>
+                </Menu>
+
+                <Menu text="Ayuda">
+                    <items>
+                        <MenuItem onAction="#acercaDe" text="Acerca de" />
+                    </items>
+                </Menu>
+
+            </menus>
+        </MenuBar>
+
+
+        <!-- ToolBar -->
+        <ToolBar layoutX="0.0" layoutY="30.0" prefWidth="600.0">
+
+            <items>
+
+                <Button fx:id="btnCliente" onAction="#abrirRegistroCliente" text="Clientes" />
+
+                <Button fx:id="btnSolicitud" onAction="#abrirSolicitudServicio" text="Solicitud" />
+
+                <Button fx:id="btnConsultarToolbar" onAction="#consultarClientes" text="Consultar" />
+
+            </items>
+
+        </ToolBar>
+
+
+        <!-- Título -->
+        <Label layoutX="178.0" layoutY="124.0" style="-fx-font-size: 20px;" text="Sistema de Soporte Técnico" />
+
+
+        <!-- Botones principales -->
+        <Button fx:id="btnRegistrarCliente" layoutX="200.0" layoutY="180.0" onAction="#abrirRegistroCliente" prefWidth="200.0" style="-fx-background-color: FFB700;" text="Registrar Cliente" />
+
+        <Button fx:id="btnSolicitarServicio" layoutX="200.0" layoutY="230.0" onAction="#abrirSolicitudServicio" prefWidth="200.0" text="Solicitar Servicio" />
+
+        <Button fx:id="btnConsultar" layoutX="200.0" layoutY="280.0" onAction="#consultarClientes" prefWidth="200.0" style="-fx-background-color: FF00BF;" text="Consultar Información">
+
+            <contextMenu>
+                <ContextMenu>
+
+                    <items>
+
+                        <MenuItem onAction="#actualizarInformacion" text="Actualizar Información" />
+
+                        <MenuItem onAction="#eliminarInformacion" text="Eliminar Información" />
+
+                    </items>
+
+                </ContextMenu>
+            </contextMenu>
+
+        </Button>
+
+    </children>
+
+</AnchorPane>
